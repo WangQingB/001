@@ -8,16 +8,16 @@
     	<transition name="router-fade" mode="out-in">
 			<router-view v-if="!$route.meta.keepAlive"></router-view>
 		</transition>
-		<home></home>
+		<!-- <home></home> -->
     </div>
 </template>
 
 <script>
-	import home from './page/home/home';
+	// import home from './page/home/home';
   	export default {
-    	components:{
-            home
-        },
+    	// components:{
+        //     home
+		// },
   	}
 
 </script>

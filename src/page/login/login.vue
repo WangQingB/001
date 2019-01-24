@@ -6,6 +6,7 @@
         <form class="loginForm" v-if="loginWay">
             <section class="input_container phone_number">
                 <input type="text" placeholder="账号密码随便输入" name="phone" maxlength="11" v-model="phoneNumber">
+                <!--click.prevent 阻止事件的默认行为  -->
                 <button @click.prevent="getVerifyCode" :class="{right_phone_number:rightPhoneNumber}" v-show="!computedTime">获取验证码</button>
                 <button  @click.prevent v-show="computedTime">已发送({{computedTime}}s)</button>
             </section>
@@ -16,6 +17,7 @@
         <form class="loginForm" v-else>
             <section class="input_container">
                 <input type="text" placeholder="账号" v-model.lazy="userAccount">
+                <!--v-model.lazy 当添加.lazy修饰符之后，改变input框中的内容并不会使得span中的内容发生变化，此时当输入框失去焦点后触发change事件.控制台中输出相应内容 -->
             </section>
             <section class="input_container">
                 <input v-if="!showPassword" type="password" placeholder="密码"  v-model="passWord">
@@ -45,20 +47,18 @@
         </p>
         <div class="login_container" @click="mobileLogin">登录</div>
         <router-link to="/forget" class="to_forget" v-if="!loginWay">重置密码？</router-link>
-        <alert-tip v-if="showAlert" :showHide="showAlert" @closeTip="closeTip" :alertText="alertText"></alert-tip>
+        <!-- <alert-tip v-if="showAlert" :showHide="showAlert" @closeTip="closeTip" :alertText="alertText"></alert-tip> -->
     </div>
 </template>
 
 <script>
     import headTop from '../../components/header/head'
-    import alertTip from '../../components/common/alertTip'
     import {localapi, proapi, imgBaseUrl} from 'src/config/env'
     import {mapState, mapMutations} from 'vuex'
     import {mobileCode, checkExsis, sendLogin, getcaptchas, accountLogin} from '../../service/getData'
-
     export default {
-        data(){
-            return {
+    	data(){
+            return{
                 loginWay: false, //登录方式，默认短信登录
                 showPassword: false, // 是否显示密码
                 phoneNumber: null, //电话号码
@@ -74,12 +74,11 @@
                 alertText: null, //提示的内容
             }
         },
+        components:{
+            headTop
+        },
         created(){
             this.getCaptchaCode();
-        },
-        components: {
-            headTop,
-            alertTip,
         },
         computed: {
             //判断手机号码
@@ -87,7 +86,7 @@
                 return /^1\d{10}$/gi.test(this.phoneNumber)
             }
         },
-        methods: {
+        methods : {
             ...mapMutations([
                 'RECORD_USERINFO',
             ]),
@@ -100,6 +99,8 @@
                 this.showPassword = !this.showPassword;
             },
             //获取验证吗，线上环境使用固定的图片，生产环境使用真实的验证码
+            // async 函数返回一个 Promise 对象，可以使用 then 方法添加回调函数。
+            //当函数执行的时候，一旦遇到 await 就会先返回，等到触发的异步操作完成，再接着执行函数体内后面的语句
             async getCaptchaCode(){
                 let res = await getcaptchas();
                 this.captchaCodeImg = res.code;
@@ -174,7 +175,6 @@
                 }else{
                     this.RECORD_USERINFO(this.userInfo);
                     this.$router.go(-1);
-
                 }
             },
             closeTip(){
@@ -182,7 +182,6 @@
             }
         }
     }
-
 </script>
 
 <style lang="scss" scoped>
