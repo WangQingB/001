@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './router/router'
-import {routerMode} from './config/env'
 import store from './store/'
+import {routerMode} from './config/env'
 import './config/rem'
 import FastClick from 'fastclick'
 
@@ -31,6 +31,6 @@ const router = new VueRouter({
 
 new Vue({
 	router,
-	store
+	store,
 }).$mount('#app')
 

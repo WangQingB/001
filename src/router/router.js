@@ -4,7 +4,7 @@ const home = r => require.ensure([], () => r(require('../page/home/home')), 'hom
 const city = r => require.ensure([], () => r(require('../page/city/city')), 'city')
 const msite = r => require.ensure([], () => r(require('../page/msite/msite')), 'msite')
 const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
-
+const shop = r => require.ensure([], () => r(require('../page/shop/shop')), 'shop')
 
 
 export default [{
@@ -36,6 +36,11 @@ export default [{
             path: '/msite',
             component: msite,
             meta : { keepAlive : true }
+        },
+        //商铺详情页
+        {
+            path: '/shop',
+            component: shop,
         }
     ]
 }]
