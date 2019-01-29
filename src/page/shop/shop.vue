@@ -141,6 +141,7 @@
                                 </span>
                                 <svg class="cart_icon">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-icon"></use>
+                                    <!-- <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=990507863,1615406574&fm=26&gp=0.jpg" alt="" xlink:href="#cart-icon"> -->
                                 </svg>
                             </div>
                             <div class="cart_num">
@@ -1127,7 +1128,11 @@
                 left: .5rem;
                 top: -.7rem;
                 .cart_icon{
+                    z-index: 999;
                     @include wh(1.2rem, 1.2rem);
+                    use{
+                        z-index: 999;
+                    }
                 }
                 .cart_list_length{
                     position: absolute;

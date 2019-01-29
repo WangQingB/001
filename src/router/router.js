@@ -5,6 +5,10 @@ const city = r => require.ensure([], () => r(require('../page/city/city')), 'cit
 const msite = r => require.ensure([], () => r(require('../page/msite/msite')), 'msite')
 const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
 const shop = r => require.ensure([], () => r(require('../page/shop/shop')), 'shop')
+// const foodDetail = r => require.ensure([], () => r(require('../page/shop/children/foodDetail')), 'foodDetail')
+// const shopDetail = r => require.ensure([], () => r(require('../page/shop/children/shopDetail')), 'shopDetail')
+const confirmOrder = r => require.ensure([], () => r(require('../page/confirmOrder/confirmOrder')), 'confirmOrder')
+// const shopSafe = r => require.ensure([], () => r(require('../page/shop/children/children/shopSafe')), 'shopSafe')
 
 
 export default [{
@@ -41,6 +45,46 @@ export default [{
         {
             path: '/shop',
             component: shop,
-        }
+            // children: [{
+            //     path: 'foodDetail', //食品详情页
+            //     component: foodDetail,
+            // }, {
+            //     path: 'shopDetail', //商铺详情页
+            //     component: shopDetail,
+            //     children: [{
+            //         path: 'shopSafe', //商铺安全认证页
+            //         component: shopSafe,
+            //     }, ]
+            // }]
+        },
+        //确认订单页
+        {
+            path: '/confirmOrder',
+            component: confirmOrder,
+            // children: [{
+            //     path: 'remark', //订单备注
+            //     component: remark,
+            // }, {
+            //     path: 'invoice', //发票抬头
+            //     component: invoice,
+            // }, {
+            //     path: 'payment', //付款页面
+            //     component: payment,
+            // }, {
+            //     path: 'userValidation', //用户验证
+            //     component: userValidation,
+            // }, {
+            //     path: 'chooseAddress', //选择地址
+            //     component: chooseAddress,
+            //     children: [{
+            //         path: 'addAddress', //添加地址
+            //         component: addAddress,
+            //         children: [{
+            //             path: 'searchAddress', //搜索地址
+            //             component: searchAddress,
+            //         }]
+            //     }, ]
+            // }, ]
+        },
     ]
 }]

@@ -33,7 +33,7 @@
 
 <script>
     import {mapState, mapMutations} from 'vuex'
-import { POINT_CONVERSION_COMPRESSED } from 'constants';
+    import { POINT_CONVERSION_COMPRESSED } from 'constants';
     export default {
     	data(){
             return{
