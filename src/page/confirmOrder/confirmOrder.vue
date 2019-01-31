@@ -156,10 +156,8 @@
         created(){
             //获取上个页面传递过来的geohash值
             this.geohash = this.$route.query.geohash;
-            console.log(this.$router.query.geohash)
             //获取上个页面传递过来的shopid值
             this.shopId = this.$route.query.shopId;
-            console.log(this.$router.query.shopId)
             this.INIT_BUYCART();
             this.SAVE_SHOPID(this.shopId);
             //获取当前商铺购物车信息
