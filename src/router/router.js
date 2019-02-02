@@ -11,6 +11,7 @@ const foodDetail = r => require.ensure([], () => r(require('../page/shop/childre
 const shopDetail = r => require.ensure([], () => r(require('../page/shop/children/shopDetail')), 'shopDetail')
 const confirmOrder = r => require.ensure([], () => r(require('../page/confirmOrder/confirmOrder')), 'confirmOrder')
 const shopSafe = r => require.ensure([], () => r(require('../page/shop/children/children/shopSafe')), 'shopSafe')
+const download = r => require.ensure([], () => r(require('../page/download/download')), 'download')
 // const info = r => require.ensure([], () => r(require('../page/profile/children/info')), 'info')
 // const setusername = r => require.ensure([], () => r(require('../page/profile/children/children/setusername')), 'setusername')
 // const address = r => require.ensure([], () => r(require('../page/profile/children/children/address')), 'address')
@@ -121,6 +122,11 @@ export default [{
             //         }]
             //     }, ]
             // }, ]
+        },
+        //下载页
+        {
+            path: '/download',
+            component: download
         },
     ]
 }]

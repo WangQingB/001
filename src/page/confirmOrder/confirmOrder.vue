@@ -27,8 +27,8 @@
             <section class="delivery_model container_style">
                 <p class="deliver_text">送达时间</p>
                 <section class="deliver_time">
-                    <p>尽快送达 | 预计 {{checkoutData[0].delivery_reach_time}}</p>
-                    <p v-if="checkoutData[0].cart.is_deliver_by_fengniao">蜂鸟专送</p>
+                    <p>尽快送达 | 预计 {{checkoutData.delivery_reach_time}}</p>
+                    <p v-if="checkoutData.cart.is_deliver_by_fengniao">蜂鸟专送</p>
                 </section>
             </section>
             <section class="pay_way container_style">
@@ -158,35 +158,13 @@
             this.geohash = this.$route.query.geohash;
             //获取上个页面传递过来的shopid值
             this.shopId = this.$route.query.shopId;
-            console.log(this.$route)
             this.INIT_BUYCART();
             this.SAVE_SHOPID(this.shopId);
             //获取当前商铺购物车信息
             this.shopCart = this.cartList[this.shopId];
         },
         mounted(){
-            // let newArr = new Array;
-            //     Object.values(this.shopCart).forEach(categoryItem => {
-            //         Object.values(categoryItem).forEach(itemValue=> {
-            //             Object.values(itemValue).forEach(item => {
-            //                 newArr.push({
-            //                     attrs: [],
-            //                     extra: {},
-            //                     id: item.id,
-            //                     name: item.name,
-            //                     packing_fee: item.packing_fee,
-            //                     price: item.price,
-            //                     quantity: item.num,
-            //                     sku_id: item.sku_id,
-            //                     specs: [item.specs],
-            //                     stock: item.stock,
-            //                 })
-            //             })
-            //         })
-            //     })
-            //     this.checkoutData = [newArr]
-            //     console.log(this.checkoutData[0])
-                
+            console.log(this.shopId)
             if (this.geohash) {
                 this.initData();
                 this.SAVE_GEOHASH(this.geohash);
@@ -217,7 +195,7 @@
                 if (this.inputText) {
                     return str + this.inputText;
                 }else{
-                    return str.substr(0, str.lastIndexOf(',')) ;
+                    return str.substr(0, str.lastIndexOf('，')) ;
                 }
             },
         },
